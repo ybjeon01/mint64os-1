@@ -325,6 +325,9 @@ void kInitializeScheduler( void )
     pstTask->qwStackSize = 0x100000;
     pstTask->bFPUUsed = FALSE;
     
+    // 프로세스 스레드 리스트 초기화
+    kInitializeList(&(pstTask->stChildThreadList));
+    
     // 프로세서 사용률을 계산하는데 사용하는 자료구조 초기화
     gs_vstScheduler[ bCurrentAPICID ].qwSpendProcessorTimeInIdleTask = 0;
     gs_vstScheduler[ bCurrentAPICID ].qwProcessorLoad = 0;
